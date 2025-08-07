@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panadería Delicia</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    body {
+      line-height: 1.6;
+      background-color: #fff8f0;
+      color: #333;
+    }
+    header {
+      background-color: #c47f4d;
+      padding: 20px;
+      text-align: center;
+      color: white;
+    }
+    nav {
+      background: #e2b07f;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 10px;
+      flex-wrap: wrap;
+    }
+    nav a {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .hero {
+      background-image: url('https://i.postimg.cc/Y9c18Hfb/Chat-GPT-Image-7-ago-2025-02-21-51-p-m.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-color: #eecab1;
+      height: 500px;
+      max-width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 2.5em;
+      font-weight: bold;
+      text-shadow: 3px 3px 6px #000;
+      position: relative;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.4);
+      z-index: 1;
+    }
+    .hero > * {
+      position: relative;
+      z-index: 2;
+    }
+    .section {
+      display: none;
+      padding: 40px 20px;
+      text-align: center;
+    }
+    .section.active {
+      display: block;
+    }
+    .section h2 {
+      color: #c47f4d;
+      margin-bottom: 20px;
+    }
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+    .card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: 20px;
+      width: 250px;
+      text-align: center;
+    }
+    .card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+    form {
+      max-width: 400px;
+      margin: 0 auto;
+      text-align: left;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      margin-top: 20px;
+      background-color: #c47f4d;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .footer {
+      background: #c47f4d;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+  </style>
+  <script>
+    function mostrarSeccion(id) {
+      document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      mostrarSeccion('menu'); // Mostrar una por defecto
+      document.querySelectorAll('nav a').forEach(enlace => {
+        enlace.addEventListener('click', e => {
+          e.preventDefault();
+          const id = enlace.getAttribute('href').substring(1);
+          mostrarSeccion(id);
+        });
+      });
+    });
+  </script>
+</head>
+<body>
+  <header>
+    <h1>Panadería Las Delicia</h1>
+  </header>
+  <nav>
+    <a href="#menu">Menú</a>
+    <a href="#nosotros">Sobre Nosotros</a>
+    <a href="#pedidos">Pedidos</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+  <div class="hero" id="inicio">
+    ¡Disfruta del sabor recién horneado!
+  </div>
+
+  <section class="section" id="menu">
+    <h2>Menú</h2>
+    <div class="cards">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1608198093002-ad4e0054841b" alt="Pan artesanal">
+        <h3>Pan artesanal</h3>
+        <p>Crujiente por fuera, suave por dentro. $3.000</p>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1601979031925-27f4b3dd5b68" alt="Pastel de chocolate">
+        <h3>Pastel de chocolate</h3>
+        <p>Con cobertura espesa y relleno dulce. $5.000</p>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1596953041773-49e8e6f63cba" alt="Arepas de queso">
+        <h3>Arepas de queso</h3>
+        <p>Tradicionales y frescas. $2.500</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="nosotros">
+    <h2>Sobre Nosotros</h2>
+    <p>Somos una panadería apasionada por lo artesanal y el sabor casero. Utilizamos ingredientes frescos y de alta calidad para ofrecerte lo mejor.</p>
+  </section>
+
+  <section class="section" id="pedidos">
+    <h2>Haz tu pedido</h2>
+    <form>
+      <label for="producto">Producto</label>
+      <select id="producto" name="producto">
+        <option value="pan">Pan artesanal</option>
+        <option value="pastel">Pastel de chocolate</option>
+        <option value="arepa">Arepas de queso</option>
+      </select>
+
+      <label for="cantidad">Cantidad</label>
+      <input type="number" id="cantidad" name="cantidad" min="1" value="1">
+
+      <label for="nombre">Tu nombre</label>
+      <input type="text" id="nombre" name="nombre" required>
+
+      <label for="direccion">Dirección de entrega</label>
+      <textarea id="direccion" name="direccion" rows="3" required></textarea>
+
+      <label for="telefono">Teléfono</label>
+      <input type="tel" id="telefono" name="telefono" required>
+
+      <button type="submit">Enviar pedido</button>
+    </form>
+  </section>
+
+  <section class="section" id="contacto">
+    <h2>Contacto</h2>
+    <p>📍 Calle Panadería #123, Ciudad Delicia</p>
+    <p>📞 +57 123 456 7890</p>
+    <p>📧 contacto@panaderiadelicia.com</p>
+  </section>
+
+  <footer class="footer">
+    <p>&copy; 2025 Panadería Delicia - Todos los derechos reservados</p>
+  </footer>
+</body>
+</html>
